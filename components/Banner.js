@@ -9,9 +9,9 @@ function Banner() {
         className="top-0 absolute w-screen min-h-screen -z-10 object-cover "
       />
 
-      <div className="container flex flex-col justify-center items-center mt-48">
+      <div className="container flex flex-col justify-center items-center mt-48 cursor-default">
         <p className="text-white text-[4rem] backdrop-blur-md shadow-lg rounded-xl p-4 w-3/4 text-center">
-          Welcome to the metaverse
+          Welcome to Covax
           <p className="text-3xl text-left">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio et,
             dolorem tempore qui ullam officia reiciendis nemo voluptas nesciunt
