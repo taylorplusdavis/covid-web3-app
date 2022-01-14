@@ -1,9 +1,7 @@
+import LineChart from "./Charts/LineChart";
+
 function Content() {
-  return (
-    <div>
-      <p className="text-white">content</p>
-    </div>
-  );
+  return <div>{/* multipage form */}</div>;
 }
 
 export default Content;

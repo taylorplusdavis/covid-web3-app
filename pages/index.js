@@ -7,8 +7,9 @@ export default function Home() {
   return (
     <div className="flex flex-col scrollbar-thin scrollbar-thumb-black relative h-screen">
       <Head>
-        <title>Covid App</title>
+        <title>Covax+</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src="//d3js.org/d3.v3.min.js"></script>
       </Head>
       <Navbar />
       <Banner />

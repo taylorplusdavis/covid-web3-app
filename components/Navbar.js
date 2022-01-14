@@ -1,25 +1,36 @@
+import { LoginIcon } from "@heroicons/react/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import Button from "./Button";
 
 function Navbar() {
+  const router = useRouter();
   const { data: session } = useSession();
-
   console.log(session);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push("");
+  };
 
   return (
     <nav className="flex justify-around shadow-sm items-center py-4 z-50 text-white backdrop-blur-md top-0 w-screen sticky">
       {/* left */}
-      <p className="font-extrabold text-3xl sticky top-0 cursor-default">
-        Covax
+      <p
+        className="font-extrabold text-3xl sticky top-0 cursor-pointer"
+        onClick={handleClick}
+      >
+        Covax<span className="text-red-600">+</span>
       </p>
       {/* middle */}
       <ul className="flex space-x-4 text-xl">
-        <li className="cursor-pointer px-10 hover:-translate-y-1 transition-all ease-in-out duration-150">
+        <li className="cursor-pointer px-10 hover:-translate-y-1 hover:text-red-600 transition-all ease-in-out duration-200">
           <p className="">Trade</p>
         </li>
-        <li className="cursor-pointer px-10 hover:-translate-y-1 transition-all ease-in-out duration-150">
+        <li className="cursor-pointer px-10 hover:-translate-y-1 hover:text-red-600 transition-all ease-in-out duration-200">
           <p>Help</p>
         </li>
-        <li className="cursor-pointer px-10 hover:-translate-y-1 transition-all ease-in-out duration-150">
+        <li className="cursor-pointer px-10 hover:-translate-y-1 hover:text-red-600 transition-all ease-in-out duration-200">
           <p>About</p>
         </li>
       </ul>
@@ -28,24 +39,21 @@ function Navbar() {
       {session ? (
         <div className="flex items-center space-x-4">
           <p>
-            Welcome, <span className="font-bold"> {session.user.name}</span>{" "}
-            <br />
+            Welcome,{" "}
+            <span className="font-bold text-red-600"> {session.user.name}</span>{" "}
+            <hr className="my-1" />
             <p className="text-xs">{session.user.email} </p>
           </p>
-          <button
-            className="buttonContainer rounded-full bg-gradient-to-t from-slate-300 to-amber-100 hover:from-sky-200 hover:to-amber-100"
-            onClick={signOut}
-          >
-            <p className="px-8 py-4 text-white text-xl font-semibold">Logout</p>
-          </button>
+          <Button onClick={signOut}>Logout of wallet</Button>
         </div>
       ) : (
-        <button
-          className="buttonContainer rounded-full bg-gradient-to-t from-slate-300 to-amber-100 hover:from-sky-200 hover:to-amber-100"
+        <Button
           onClick={signIn}
+          icon={<LoginIcon className="h-8 -scale-100" />}
+          className="flex"
         >
-          <p className="px-8 py-4 text-white text-xl font-semibold">Login</p>
-        </button>
+          Connect wallet
+        </Button>
       )}
     </nav>
   );
